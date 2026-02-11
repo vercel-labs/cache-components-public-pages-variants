@@ -23,9 +23,7 @@ export async function getProduct(id: string): Promise<Product> {
   return response.json()
 }
 
-export const IN_DEMAND_THRESHOLD = 10
-
-export type Activity = { id: string; sold: number; wishlisted: number; viewed: number }
+export type Activity = { id: string; sold: number; wishlisted: number; viewed: number; inDemand: boolean }
 export async function getActivity(id: string): Promise<Activity> {
   const response = await fetch(
     `https://next-recipe-api.vercel.dev/products/${id}/activity`
