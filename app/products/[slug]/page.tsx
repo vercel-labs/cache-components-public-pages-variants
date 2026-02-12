@@ -8,16 +8,16 @@ import { InDemandBadge } from '@/app/products/ui'
 export async function generateStaticParams() {
   const products = await getProducts()
 
-  return products.map((product) => ({ id: product.id }))
+  return products.map((product) => ({ slug: product.slug }))
 }
 
 export default async function Page({
   params,
 }: {
-  params: Promise<{ id: string }>
+  params: Promise<{ slug: string }>
 }) {
-  const { id } = await params
-  const product = await getProduct(id)
+  const { slug } = await params
+  const product = await getProduct(slug)
 
   if (!product) notFound()
 
@@ -42,7 +42,7 @@ export default async function Page({
             className="object-cover opacity-90 brightness-150 dark:brightness-100"
           />
           <Suspense>
-            <InDemandBadge id={id} verbose />
+            <InDemandBadge slug={slug} verbose />
           </Suspense>
         </div>
         <div className="grid gap-2 md:content-start">

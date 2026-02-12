@@ -5,13 +5,13 @@ import type { Product, Promotion } from '@/app/products/data'
 import { getActivity } from '@/app/products/data'
 
 export async function InDemandBadge({
-  id,
+  slug,
   verbose,
 }: {
-  id: string
+  slug: string
   verbose?: boolean
 }) {
-  const { sold, inDemand } = await getActivity(id)
+  const { sold, inDemand } = await getActivity(slug)
   if (!inDemand) return null
 
   return (
@@ -27,7 +27,7 @@ export function List({ items }: { items: Product[] }) {
       {items.map((product) => (
         <Link
           key={product.id}
-          href={`/products/${product.id}`}
+          href={`/products/${product.slug}`}
           className="group grid gap-2"
         >
           <div className="relative flex aspect-square items-center justify-center rounded-xl bg-gray-100 transition-colors group-hover:bg-gray-200 dark:bg-gray-800 dark:group-hover:bg-gray-700">
@@ -39,7 +39,7 @@ export function List({ items }: { items: Product[] }) {
               className="object-cover opacity-90 brightness-150 dark:brightness-100"
             />
             <Suspense>
-              <InDemandBadge id={product.id} />
+              <InDemandBadge slug={product.slug} />
             </Suspense>
           </div>
           <h2 className="text-gray-500 transition-colors group-hover:text-gray-900 dark:text-gray-300 dark:group-hover:text-gray-100">{product.name}</h2>
