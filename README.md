@@ -1,21 +1,15 @@
-# Public Pages Demo
+# Building variations of the same page
 
-Demonstrates how to build public pages in Next.js that combine prerendered content with dynamic, user-specific data.
+This demo shows how to create page variations with route params, prerender them with `generateStaticParams`, and add conditional dynamic content without breaking prerendering.
 
-- **Static components**: Prerendered at build time (e.g., header)
-- **Cache components**: Use `"use cache"` to prerender components with external data (e.g., product list)
-- **Streamed components**: Use Suspense to stream dynamic content without blocking prerendered parts (e.g., promotion banner)
+- [Demo](https://cache-components-page-variations.labs.vercel.dev/products)
+- [Guide](https://nextjs.org/docs/app/guides/page-variations)
 
-## Run
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the result.
