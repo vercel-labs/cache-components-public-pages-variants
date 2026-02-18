@@ -18,16 +18,22 @@ export async function getProducts(): Promise<Product[]> {
 export async function getProduct(slug: string): Promise<Product> {
   'use cache'
   const response = await fetch(
-    `https://next-recipe-api.vercel.dev/products/${slug}`
+    `https://next-recipe-api.vercel.dev/products/${slug}`,
   )
 
   return response.json()
 }
 
-export type Activity = { id: string; sold: number; wishlisted: number; viewed: number; inDemand: boolean }
+export type Activity = {
+  id: string
+  sold: number
+  wishlisted: number
+  viewed: number
+  inDemand: boolean
+}
 export async function getActivity(slug: string): Promise<Activity> {
   const response = await fetch(
-    `https://next-recipe-api.vercel.dev/products/${slug}/activity`
+    `https://next-recipe-api.vercel.dev/products/${slug}/activity`,
   )
 
   return response.json()

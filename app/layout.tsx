@@ -19,7 +19,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           <Suspense fallback={<PromotionSkeleton />}>
             <PromotionContent />
           </Suspense>
-          {children}
+          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         </main>
       </body>
     </html>
