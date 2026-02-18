@@ -42,9 +42,9 @@ export default async function Page({
             height={384}
             className="object-cover opacity-90 brightness-150 dark:brightness-100"
           />
-          <Suspense>
+          {/* <Suspense>
             <InDemandBadge slug={slug} verbose />
-          </Suspense>
+          </Suspense> */}
         </div>
         <div className="grid gap-2 md:content-start">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
