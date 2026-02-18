@@ -31,7 +31,6 @@ export function List({ items }: { items: Product[] }) {
           key={product.id}
           href={`/products/${product.slug}`}
           className="group grid gap-2"
-          prefetch={false}
         >
           <div className="relative flex aspect-square items-center justify-center rounded-xl bg-gray-100 transition-colors group-hover:bg-gray-200 dark:bg-gray-800 dark:group-hover:bg-gray-700">
             <Image
