@@ -15,8 +15,10 @@ export async function InDemandBadge({
   if (!inDemand) return null
 
   return (
-    <div className="absolute bottom-2 left-2 truncate translate-y-0 rounded-full bg-white px-2 py-1 text-xs font-medium text-gray-900 opacity-100 transition-all duration-300 starting:translate-y-1 starting:opacity-0 dark:bg-gray-700 dark:text-gray-100">
-      {verbose ? `In demand: sold ${sold} times in the last 12 hours` : 'In demand'}
+    <div className="absolute bottom-2 left-2 translate-y-0 truncate rounded-full bg-white px-2 py-1 text-xs font-medium text-gray-900 opacity-100 transition-all duration-300 dark:bg-gray-700 dark:text-gray-100 starting:translate-y-1 starting:opacity-0">
+      {verbose
+        ? `In demand: sold ${sold} times in the last 12 hours`
+        : 'In demand'}
     </div>
   )
 }
@@ -29,6 +31,7 @@ export function List({ items }: { items: Product[] }) {
           key={product.id}
           href={`/products/${product.slug}`}
           className="group grid gap-2"
+          prefetch={false}
         >
           <div className="relative flex aspect-square items-center justify-center rounded-xl bg-gray-100 transition-colors group-hover:bg-gray-200 dark:bg-gray-800 dark:group-hover:bg-gray-700">
             <Image
@@ -42,7 +45,9 @@ export function List({ items }: { items: Product[] }) {
               <InDemandBadge slug={product.slug} />
             </Suspense>
           </div>
-          <h2 className="text-gray-500 transition-colors group-hover:text-gray-900 dark:text-gray-300 dark:group-hover:text-gray-100">{product.name}</h2>
+          <h2 className="text-gray-500 transition-colors group-hover:text-gray-900 dark:text-gray-300 dark:group-hover:text-gray-100">
+            {product.name}
+          </h2>
         </Link>
       ))}
     </div>
